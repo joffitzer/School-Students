@@ -1,0 +1,8 @@
+<h1>This is the show page for this student:</h1>
+<h3><%= @student.name%></h3>
+<h3><%= @student.age%></h3>
+<h3><%= @student.school ? (link_to "#{@student.school.name}", school_path(@student.school))  : "This student is not enrolled in a school" %></h3>
+<br>
+<h5><%= link_to "Edit Student", edit_student_path %></h5>
+<h5><%= link_to "View All Students", students_path %></h5>
+<h5><%= button_to "Delete Student", { action: "delete", id: @student.id }, method: :delete %> </h5>

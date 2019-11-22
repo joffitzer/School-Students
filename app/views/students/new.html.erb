@@ -1,0 +1,17 @@
+<%if flash[:message]%>
+    <%=flash[:message]%>
+<%end %>
+
+<h1>Form to create a new student:</h1>
+<%= form_for @student do |f| %>
+  <%= f.label :name %>:
+  <%= f.text_field :name %><br />
+
+  <%= f.label :age %>:
+  <%= f.number_field :age %><br />
+  <br>
+  <%= f.collection_select :school_id, @schools, :id, :name, prompt: true %>
+  <br>
+
+  <%= f.submit %>
+<% end %>

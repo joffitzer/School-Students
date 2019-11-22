@@ -1,9 +1,11 @@
 <h1>Schools</h1>
 
+<%= link_to "Create a School", new_school_path %>
+
 <ul>
   <%@schools.each do |school|%>
     <li>
-      <%=school.name%>
+      <%= link_to "#{school.name}", school_path(school) %>
     </li>
   <%end%>
 

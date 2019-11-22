@@ -1,2 +1,23 @@
-<h1>School#show</h1>
-<p>Find me in app/views/school/show.html.erb</p>
+<h1>This is the school</h1>
+ <%= @school.name %>
+ <br>
+ <%= @school.address %>
+ <hr>
+ <% @students_in_school.each do |student| %>
+    <%= link_to "#{student.name}", student_path(student) %>
+    <%= button_to "Delete Student", {:action=>"delete", :controller=>"students", :id=>student.id}, method: :delete %>
+    <% end %>
+ <br>
+<h1>Search for a student:</h1>
+
+<%= form_with(url: "/search", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<%= link_to "Edit School", edit_school_path %>
+<br>
+<%= link_to "View all Schools", schools_path %>
+<br>
+ <%= button_to "Delete School", { action: "delete", id: @school.id }, method: :delete %>
